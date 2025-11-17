@@ -11,7 +11,7 @@ export class NcaToolkitApi implements ICredentialType {
 
 	displayName = 'NCA Toolkit API';
 
-	icon: Icon = 'file:../icons/nca-toolkit.svg';
+	icon: Icon = 'file:../icons/nca-toolkit.png';
 
 	documentationUrl = 'https://github.com/stephengpope/no-code-architects-toolkit';
 

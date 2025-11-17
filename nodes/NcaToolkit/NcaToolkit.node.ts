@@ -9,7 +9,7 @@ export class NcaToolkit implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'NCA Toolkit',
 		name: 'ncaToolkit',
-		icon: 'file:nca-toolkit.svg',
+		icon: 'file:nca-toolkit.png',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',

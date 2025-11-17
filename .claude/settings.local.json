@@ -7,7 +7,16 @@
       "Bash(npm install)",
       "Bash(npm run lint)",
       "Bash(npm run lint:fix:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd NCA Toolkit custom node for n8n\n\nImplements comprehensive n8n integration for the No Code Architects Toolkit API with support for:\n- Media operations: transcribe, convert, metadata extraction, silence detection\n- Video processing: caption, trim, split, cut, concatenate, thumbnail extraction\n- Audio processing: concatenate\n- Utilities: job status checking, connection testing\n\nFeatures:\n- Declarative node implementation following n8n best practices\n- Async/sync processing modes with webhook support\n- Comprehensive parameter validation and sensible defaults\n- Color pickers for caption styling options\n- API key authentication with configurable base URL\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git commit:*)",
+      "Bash(npm link)",
+      "Bash(where n8n:*)",
+      "Bash(nul)",
+      "Bash(npm install:*)",
+      "Bash(n8n start)"
     ],
     "deny": [],
     "ask": []
