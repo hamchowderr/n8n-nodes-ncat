@@ -16,7 +16,10 @@
       "Bash(where n8n:*)",
       "Bash(nul)",
       "Bash(npm install:*)",
-      "Bash(n8n start)"
+      "Bash(n8n start)",
+      "Bash(taskkill:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": []

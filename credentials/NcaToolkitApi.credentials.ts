@@ -48,7 +48,7 @@ export class NcaToolkitApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials.baseUrl}}',
-			url: '/v1/toolkit/test',
+			url: '/v1/toolkit/authenticate',
 			method: 'GET',
 		},
 	};

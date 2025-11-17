@@ -1,6 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
 import { jobStatusDescription } from './jobStatus';
-import { testDescription } from './test';
 
 const showOnlyForUtilities = {
 	resource: ['utilities'],
@@ -28,21 +27,8 @@ export const utilitiesDescription: INodeProperties[] = [
 					},
 				},
 			},
-			{
-				name: 'Test Connection',
-				value: 'test',
-				action: 'Test API connection',
-				description: 'Verify API installation and connectivity',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v1/toolkit/test',
-					},
-				},
-			},
 		],
 		default: 'jobStatus',
 	},
 	...jobStatusDescription,
-	...testDescription,
 ];
