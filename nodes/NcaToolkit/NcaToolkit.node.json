@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-nca-toolkit",
+	"node": "n8n-nodes-ncat",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Media Transformation"],
