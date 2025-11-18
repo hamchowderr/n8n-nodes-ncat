@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-ncat",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"description": "n8n node for the No Code Architects Toolkit - Self-hosted media processing API for video, audio, and image manipulation",
 	"license": "MIT",
 	"homepage": "https://github.com/hamchowderr/n8n-nodes-ncat",
