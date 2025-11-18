@@ -22,7 +22,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 1. Go to **Settings** > **Community Nodes**
 2. Select **Install**
-3. Enter `n8n-nodes-nca-toolkit` in the **Enter npm package name** field
+3. Enter `n8n-nodes-ncat` in the **Enter npm package name** field
 4. Agree to the [risks](https://docs.n8n.io/integrations/community-nodes/risks/) of using community nodes
 5. Select **Install**
 
