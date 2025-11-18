@@ -1,7 +1,5 @@
 import {
 	NodeConnectionTypes,
-	type IExecuteFunctions,
-	type INodeExecutionData,
 	type INodeType,
 	type INodeTypeDescription,
 } from 'n8n-workflow';
@@ -80,10 +78,4 @@ export class NcaToolkit implements INodeType {
 			customJobIdField,
 		],
 	};
-
-	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
-		// Declarative nodes use routing to handle requests automatically
-		// This method exists to satisfy the INodeType interface requirement
-		return [];
-	}
 }
