@@ -7,19 +7,19 @@ const showForConvertMp3 = {
 
 export const convertMp3Description: INodeProperties[] = [
 	{
-		displayName: 'Audio Bitrate',
-		name: 'audioBitrate',
+		displayName: 'Bitrate',
+		name: 'bitrate',
 		type: 'string',
 		displayOptions: {
 			show: showForConvertMp3,
 		},
-		default: '192k',
+		default: '128k',
 		placeholder: '192k',
 		description: 'Audio bitrate for the MP3 file (e.g., 128k, 192k, 320k)',
 		routing: {
 			send: {
 				type: 'body',
-				property: 'audio_bitrate',
+				property: 'bitrate',
 			},
 		},
 	},

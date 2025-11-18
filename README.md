@@ -1,247 +1,203 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-nca-toolkit
 
-# n8n-nodes-starter
+This is an n8n community node that integrates with the [No Code Architects Toolkit API](https://github.com/stephengpope/no-code-architects-toolkit). It provides comprehensive media processing capabilities including video, audio, and image manipulation directly in your n8n workflows.
 
-This starter repository helps you build custom integrations for [n8n](https://n8n.io). It includes example nodes, credentials, the node linter, and all the tooling you need to get started.
+[n8n](https://n8n.io/) is a fair-code licensed workflow automation platform.
 
-## Quick Start
+## Table of Contents
 
-> [!TIP]
-> **New to building n8n nodes?** The fastest way to get started is with `npm create @n8n/node`. This command scaffolds a complete node package for you using the [@n8n/node-cli](https://www.npmjs.com/package/@n8n/node-cli).
+- [Installation](#installation)
+- [Prerequisites](#prerequisites)
+- [Operations](#operations)
+- [Credentials](#credentials)
+- [Usage Examples](#usage-examples)
+- [Compatibility](#compatibility)
+- [Resources](#resources)
 
-**To create a new node package from scratch:**
+## Installation
 
-```bash
-npm create @n8n/node
-```
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
-**Already using this starter? Start developing with:**
+### Community Nodes (Self-Hosted)
 
-```bash
-npm run dev
-```
+1. Go to **Settings** > **Community Nodes**
+2. Select **Install**
+3. Enter `n8n-nodes-nca-toolkit` in the **Enter npm package name** field
+4. Agree to the [risks](https://docs.n8n.io/integrations/community-nodes/risks/) of using community nodes
+5. Select **Install**
 
-This starts n8n with your nodes loaded and hot reload enabled.
-
-## What's Included
-
-This starter repository includes two example nodes to learn from:
-
-- **[Example Node](nodes/Example/)** - A simple starter node that shows the basic structure with a custom `execute` method
-- **[GitHub Issues Node](nodes/GithubIssues/)** - A complete, production-ready example built using the **declarative style**:
-  - **Low-code approach** - Define operations declaratively without writing request logic
-  - Multiple resources (Issues, Comments)
-  - Multiple operations (Get, Get All, Create)
-  - Two authentication methods (OAuth2 and Personal Access Token)
-  - List search functionality for dynamic dropdowns
-  - Proper error handling and typing
-  - Ideal for HTTP API-based integrations
-
-> [!TIP]
-> The declarative/low-code style (used in GitHub Issues) is the recommended approach for building nodes that interact with HTTP APIs. It significantly reduces boilerplate code and handles requests automatically.
-
-Browse these examples to understand both approaches, then modify them or create your own.
-
-## Finding Inspiration
-
-Looking for more examples? Check out these resources:
-
-- **[npm Community Nodes](https://www.npmjs.com/search?q=keywords:n8n-community-node-package)** - Browse thousands of community-built nodes on npm using the `n8n-community-node-package` tag
-- **[n8n Built-in Nodes](https://github.com/n8n-io/n8n/tree/master/packages/nodes-base/nodes)** - Study the source code of n8n's official nodes for production-ready patterns and best practices
-- **[n8n Credentials](https://github.com/n8n-io/n8n/tree/master/packages/nodes-base/credentials)** - See how authentication is implemented for various services
-
-These are excellent resources to understand how to structure your nodes, handle different API patterns, and implement advanced features.
+After installing the node, you can use it like any other node in your workflows.
 
 ## Prerequisites
 
-Before you begin, install the following on your development machine:
+You need a running instance of the No Code Architects Toolkit API. The toolkit is a self-hosted media processing API that handles video, audio, and image operations.
 
-### Required
+- **NCA Toolkit Repository**: https://github.com/stephengpope/no-code-architects-toolkit
+- **API Key**: Required for authentication
+- **Base URL**: The URL where your NCA Toolkit API is hosted
 
-- **[Node.js](https://nodejs.org/)** (v22 or higher) and npm
-  - Linux/Mac/WSL: Install via [nvm](https://github.com/nvm-sh/nvm)
-  - Windows: Follow [Microsoft's NodeJS guide](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows)
-- **[git](https://git-scm.com/downloads)**
+## Operations
 
-### Recommended
+### Media Operations
 
-- Follow n8n's [development environment setup guide](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/)
+- **Transcribe**: Convert audio/video to text using Whisper AI
+- **Convert to MP3**: Convert any audio/video file to MP3 format
+- **Convert**: Convert media files between different formats
+- **Get Metadata**: Extract metadata from media files
+- **Detect Silence**: Detect silent segments in audio/video files
 
-> [!NOTE]
-> The `@n8n/node-cli` is included as a dev dependency and will be installed automatically when you run `npm install`. The CLI includes n8n for local development, so you don't need to install n8n globally.
+### Video Operations
 
-## Getting Started with this Starter
+- **Add Captions**: Add subtitles/captions to videos with extensive styling options
+- **Trim**: Trim videos by specifying start and end times
+- **Split**: Split a video into multiple segments
+- **Cut**: Remove specific segments from a video
+- **Concatenate**: Join multiple videos together
+- **Extract Thumbnail**: Extract a thumbnail image from a video at a specific time
 
-Follow these steps to create your own n8n community node package:
+### Audio Operations
 
-### 1. Create Your Repository
+- **Concatenate**: Join multiple audio files together
 
-[Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template, then clone it:
+### S3 Operations
 
-```bash
-git clone https://github.com/<your-organization>/<your-repo-name>.git
-cd <your-repo-name>
-```
+- **Upload**: Upload files to S3-compatible storage
 
-### 2. Install Dependencies
+### Status Operations
 
-```bash
-npm install
-```
+- **Get Job Status**: Check the status of an asynchronous processing job
+- **Get All Jobs Status**: Retrieve status of all jobs within a time range
 
-This installs all required dependencies including the `@n8n/node-cli`.
+## Credentials
 
-### 3. Explore the Examples
+To use this node, you need to configure the **NCA Toolkit API** credentials:
 
-Browse the example nodes in [nodes/](nodes/) and [credentials/](credentials/) to understand the structure:
+1. In n8n, go to **Credentials** > **New**
+2. Search for "NCA Toolkit API"
+3. Enter your credentials:
+   - **API Key**: Your NCA Toolkit API key
+   - **Base URL**: The base URL of your NCA Toolkit instance (e.g., `https://your-nca-toolkit.com`)
 
-- Start with [nodes/Example/](nodes/Example/) for a basic node
-- Study [nodes/GithubIssues/](nodes/GithubIssues/) for a real-world implementation
+### Testing Credentials
 
-### 4. Build Your Node
+The node includes a built-in credential test that verifies your API key and base URL by calling the `/v1/toolkit/authenticate` endpoint.
 
-Edit the example nodes to fit your use case, or create new node files by copying the structure from [nodes/Example/](nodes/Example/).
+## Usage Examples
 
-> [!TIP]
-> If you want to scaffold a completely new node package, use `npm create @n8n/node` to start fresh with the CLI's interactive generator.
+### Example 1: Transcribe Audio File
 
-### 5. Configure Your Package
+This workflow transcribes an audio file to text:
 
-Update `package.json` with your details:
+1. Add the **NCA Toolkit** node
+2. Select **Resource**: Media Operation
+3. Select **Operation**: Transcribe
+4. **Media URL**: Enter the URL to your audio/video file
+5. **Model** (optional): Choose transcription model (default: base)
+6. Configure **Response Options**:
+   - Include Text
+   - Include SRT
+   - Word Timestamps
+7. Set **Webhook URL** to receive results asynchronously (optional)
 
-- `name` - Your package name (must start with `n8n-nodes-`)
-- `author` - Your name and email
-- `repository` - Your repository URL
-- `description` - What your node does
+### Example 2: Add Captions to Video
 
-Make sure your node is registered in the `n8n.nodes` array.
+This workflow adds styled captions to a video:
 
-### 6. Develop and Test Locally
+1. Add the **NCA Toolkit** node
+2. Select **Resource**: Video Processing
+3. Select **Operation**: Add Captions
+4. **Video URL**: Enter the URL to your video file
+5. **Captions**: Enter your caption text or SRT format
+6. Configure **Settings** (optional):
+   - Font Family: "Arial"
+   - Font Size: 24
+   - Word Color: #FFFFFF (white)
+   - Outline Color: #000000 (black)
+   - Position: Bottom Center
+   - Max Words Per Line: 8
 
-Start n8n with your node loaded:
+### Example 3: Video Processing Pipeline
 
-```bash
-npm run dev
-```
+Create a multi-step video processing workflow:
 
-This command runs `n8n-node dev` which:
+1. **Trim Video**
+   - Resource: Video Processing
+   - Operation: Trim
+   - Start: 0
+   - End: 30
 
-- Builds your node with watch mode
-- Starts n8n with your node available
-- Automatically rebuilds when you make changes
-- Opens n8n in your browser (usually http://localhost:5678)
+2. **Add Captions**
+   - Resource: Video Processing
+   - Operation: Add Captions
+   - Use output from previous step
 
-You can now test your node in n8n workflows!
+3. **Extract Thumbnail**
+   - Resource: Video Processing
+   - Operation: Extract Thumbnail
+   - Second: 5
 
-> [!NOTE]
-> Learn more about CLI commands in the [@n8n/node-cli documentation](https://www.npmjs.com/package/@n8n/node-cli).
+### Example 4: Batch Audio Conversion
 
-### 7. Lint Your Code
+Convert multiple audio files to MP3:
 
-Check for errors:
+1. Add a trigger node to get file URLs
+2. Add **NCA Toolkit** node
+3. Select **Resource**: Media Operation
+4. Select **Operation**: Convert to MP3
+5. **Media URL**: `{{ $json.fileUrl }}`
+6. Configure **Conversion Options**:
+   - Audio Bitrate: 192k
+   - Audio Codec: libmp3lame
 
-```bash
-npm run lint
-```
+### Example 5: Asynchronous Processing with Webhooks
 
-Auto-fix issues when possible:
+For long-running operations, use webhooks:
 
-```bash
-npm run lint:fix
-```
+1. Add a **Webhook** node to receive results
+2. Copy the webhook URL
+3. Add **NCA Toolkit** node
+4. Configure your operation (e.g., Transcribe)
+5. Set **Webhook URL** to your webhook URL
+6. Add **Custom Job ID** to track the job
+7. The API will POST results to your webhook when complete
 
-### 8. Build for Production
+### Example 6: Check Job Status
 
-When ready to publish:
+Monitor processing jobs:
 
-```bash
-npm run build
-```
+1. Add **NCA Toolkit** node
+2. Select **Resource**: Status
+3. Select **Operation**: Get Job Status
+4. **Job ID**: Enter the job ID from a previous operation
+5. The node returns current status: pending, processing, completed, or failed
 
-This compiles your TypeScript code to the `dist/` folder.
+## Compatibility
 
-### 9. Prepare for Publishing
-
-Before publishing:
-
-1. **Update documentation**: Replace this README with your node's documentation. Use [README_TEMPLATE.md](README_TEMPLATE.md) as a starting point.
-2. **Update the LICENSE**: Add your details to the [LICENSE](LICENSE.md) file.
-3. **Test thoroughly**: Ensure your node works in different scenarios.
-
-### 10. Publish to npm
-
-Publish your package to make it available to the n8n community:
-
-```bash
-npm publish
-```
-
-Learn more about [publishing to npm](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
-
-### 11. Submit for Verification (Optional)
-
-Get your node verified for n8n Cloud:
-
-1. Ensure your node meets the [requirements](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/):
-   - Uses MIT license ✅ (included in this starter)
-   - No external package dependencies
-   - Follows n8n's design guidelines
-   - Passes quality and security review
-
-2. Submit through the [n8n Creator Portal](https://creators.n8n.io/nodes)
-
-**Benefits of verification:**
-
-- Available directly in n8n Cloud
-- Discoverable in the n8n nodes panel
-- Verified badge for quality assurance
-- Increased visibility in the n8n community
-
-## Available Scripts
-
-This starter includes several npm scripts to streamline development:
-
-| Script                | Description                                                      |
-| --------------------- | ---------------------------------------------------------------- |
-| `npm run dev`         | Start n8n with your node and watch for changes (runs `n8n-node dev`) |
-| `npm run build`       | Compile TypeScript to JavaScript for production (runs `n8n-node build`) |
-| `npm run build:watch` | Build in watch mode (auto-rebuild on changes)                    |
-| `npm run lint`        | Check your code for errors and style issues (runs `n8n-node lint`) |
-| `npm run lint:fix`    | Automatically fix linting issues when possible (runs `n8n-node lint --fix`) |
-| `npm run release`     | Create a new release (runs `n8n-node release`)                   |
-
-> [!TIP]
-> These scripts use the [@n8n/node-cli](https://www.npmjs.com/package/@n8n/node-cli) under the hood. You can also run CLI commands directly, e.g., `npx n8n-node dev`.
-
-## Troubleshooting
-
-### My node doesn't appear in n8n
-
-1. Make sure you ran `npm install` to install dependencies
-2. Check that your node is listed in `package.json` under `n8n.nodes`
-3. Restart the dev server with `npm run dev`
-4. Check the console for any error messages
-
-### Linting errors
-
-Run `npm run lint:fix` to automatically fix most common issues. For remaining errors, check the [n8n node development guidelines](https://docs.n8n.io/integrations/creating-nodes/).
-
-### TypeScript errors
-
-Make sure you're using Node.js v22 or higher and have run `npm install` to get all type definitions.
+- **Minimum n8n version**: 0.154.0
+- **Tested with n8n version**: 1.113.3
 
 ## Resources
 
-- **[n8n Node Documentation](https://docs.n8n.io/integrations/creating-nodes/)** - Complete guide to building nodes
-- **[n8n Community Forum](https://community.n8n.io/)** - Get help and share your nodes
-- **[@n8n/node-cli Documentation](https://www.npmjs.com/package/@n8n/node-cli)** - CLI tool reference
-- **[n8n Creator Portal](https://creators.n8n.io/nodes)** - Submit your node for verification
-- **[Submit Community Nodes Guide](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/)** - Verification requirements and process
-
-## Contributing
-
-Have suggestions for improving this starter? [Open an issue](https://github.com/n8n-io/n8n-nodes-starter/issues) or submit a pull request!
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+- [NCA Toolkit API Documentation](https://github.com/stephengpope/no-code-architects-toolkit)
+- [Repository](https://github.com/hamchowderr/n8n-nodes-ncat)
 
 ## License
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
+
+## Support
+
+For issues, questions, or contributions, please visit the [GitHub repository](https://github.com/hamchowderr/n8n-nodes-ncat/issues).
+
+## Version History
+
+### 0.1.0 (Initial Release)
+
+- Media operations: transcribe, convert to MP3, convert, metadata, silence detection
+- Video operations: caption, trim, split, cut, concatenate, thumbnail extraction
+- Audio operations: concatenate
+- S3 operations: upload to S3-compatible storage
+- Status operations: job status checking, bulk status retrieval
+- Async/sync processing modes with webhook support
+- Comprehensive parameter validation and sensible defaults

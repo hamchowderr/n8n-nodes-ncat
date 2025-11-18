@@ -2,14 +2,15 @@ import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from '
 import { mediaDescription } from './resources/media';
 import { videoDescription } from './resources/video';
 import { audioDescription } from './resources/audio';
-import { utilitiesDescription } from './resources/utilities';
-import { processingModeField, webhookUrlField, customJobIdField } from './shared/descriptions';
+import { s3Description } from './resources/s3';
+import { statusDescription } from './resources/status';
+import { webhookUrlField, customJobIdField } from './shared/descriptions';
 
 export class NcaToolkit implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'NCA Toolkit',
 		name: 'ncaToolkit',
-		icon: 'file:nca-toolkit.png',
+		icon: { light: 'file:../../icons/nca-toolkit.svg', dark: 'file:../../icons/nca-toolkit.dark.svg' },
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -42,20 +43,24 @@ export class NcaToolkit implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'Media Operation',
-						value: 'media',
-					},
-					{
-						name: 'Video Processing',
-						value: 'video',
-					},
-					{
 						name: 'Audio Processing',
 						value: 'audio',
 					},
 					{
-						name: 'Utility',
-						value: 'utilities',
+						name: 'Media Operation',
+						value: 'media',
+					},
+					{
+						name: 'S3',
+						value: 's3',
+					},
+					{
+						name: 'Status',
+						value: 'status',
+					},
+					{
+						name: 'Video Processing',
+						value: 'video',
 					},
 				],
 				default: 'media',
@@ -63,8 +68,8 @@ export class NcaToolkit implements INodeType {
 			...mediaDescription,
 			...videoDescription,
 			...audioDescription,
-			...utilitiesDescription,
-			processingModeField,
+			...s3Description,
+			...statusDescription,
 			webhookUrlField,
 			customJobIdField,
 		],

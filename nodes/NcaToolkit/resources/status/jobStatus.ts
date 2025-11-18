@@ -2,7 +2,7 @@ import type { INodeProperties } from 'n8n-workflow';
 
 const showForJobStatus = {
 	operation: ['jobStatus'],
-	resource: ['utilities'],
+	resource: ['status'],
 };
 
 export const jobStatusDescription: INodeProperties[] = [

@@ -7,61 +7,23 @@ const showForThumbnail = {
 
 export const thumbnailDescription: INodeProperties[] = [
 	{
-		displayName: 'Timestamp',
-		name: 'timestamp',
-		type: 'string',
-		displayOptions: {
-			show: showForThumbnail,
-		},
-		default: '00:00:00',
-		required: true,
-		placeholder: '00:00:05',
-		description: 'Time to extract thumbnail from (HH:MM:SS or seconds)',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'timestamp',
-			},
-		},
-	},
-	{
-		displayName: 'Format',
-		name: 'format',
-		type: 'options',
-		displayOptions: {
-			show: showForThumbnail,
-		},
-		options: [
-			{ name: 'JPEG', value: 'jpg' },
-			{ name: 'PNG', value: 'png' },
-			{ name: 'WebP', value: 'webp' },
-		],
-		default: 'jpg',
-		description: 'Output image format',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'format',
-			},
-		},
-	},
-	{
-		displayName: 'Quality',
-		name: 'quality',
+		displayName: 'Second',
+		name: 'second',
 		type: 'number',
 		displayOptions: {
 			show: showForThumbnail,
 		},
-		default: 85,
-		description: 'Image quality (1-100)',
+		default: 0,
+		placeholder: '30',
+		description: 'Timestamp in seconds at which to extract the thumbnail. Default is 0.',
 		typeOptions: {
-			minValue: 1,
-			maxValue: 100,
+			minValue: 0,
 		},
 		routing: {
 			send: {
 				type: 'body',
-				property: 'quality',
+				property: 'second',
+				value: '={{$value || undefined}}',
 			},
 		},
 	},

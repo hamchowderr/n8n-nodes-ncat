@@ -9,42 +9,46 @@ export const concatenateDescription: INodeProperties[] = [
 	{
 		displayName: 'Video URLs',
 		name: 'videoUrls',
-		type: 'string',
-		typeOptions: {
-			multipleValues: true,
-		},
+		type: 'fixedCollection',
 		displayOptions: {
 			show: showForConcatenate,
 		},
-		default: [],
 		required: true,
-		placeholder: 'https://example.com/video1.mp4',
-		description: 'URLs of videos to concatenate in order',
+		default: {},
+		placeholder: 'Add Video URL',
+		typeOptions: {
+			multipleValues: true,
+		},
+		options: [
+			{
+				name: 'videos',
+				displayName: 'Videos',
+				values: [
+					{
+						displayName: 'Video URL',
+						name: 'video_url',
+						type: 'string',
+						default: '',
+						required: true,
+						placeholder: 'https://example.com/video1.mp4',
+						description: 'URL of the video file',
+					},
+				],
+			},
+		],
 		routing: {
 			send: {
 				type: 'body',
 				property: 'video_urls',
-			},
-		},
-	},
-	{
-		displayName: 'Transition',
-		name: 'transition',
-		type: 'options',
-		displayOptions: {
-			show: showForConcatenate,
-		},
-		options: [
-			{ name: 'None', value: 'none' },
-			{ name: 'Fade', value: 'fade' },
-			{ name: 'Dissolve', value: 'dissolve' },
-		],
-		default: 'none',
-		description: 'Transition effect between videos',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'transition',
+				preSend: [
+					async function (this, requestOptions) {
+						const videoData = this.getNodeParameter('videoUrls') as { videos?: Array<{ video_url: string }> };
+						if (videoData.videos && videoData.videos.length > 0) {
+							requestOptions.body.video_urls = videoData.videos;
+						}
+						return requestOptions;
+					},
+				],
 			},
 		},
 	},

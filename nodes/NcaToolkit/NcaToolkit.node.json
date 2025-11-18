@@ -1,0 +1,24 @@
+{
+	"node": "n8n-nodes-nca-toolkit",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Media Transformation"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/hamchowderr/n8n-nodes-ncat#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/hamchowderr/n8n-nodes-ncat"
+			}
+		],
+		"apiDocumentation": [
+			{
+				"url": "https://github.com/stephengpope/no-code-architects-toolkit"
+			}
+		]
+	},
+	"alias": ["Media", "Video", "Audio", "Transcription", "Captions"]
+}
